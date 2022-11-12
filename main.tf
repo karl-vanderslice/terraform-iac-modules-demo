@@ -39,7 +39,7 @@ data "cloudflare_zone" "cloudflare" {
 ## Cloudflare zone settings and general security
 
 module "cloudflare" {
-  source = "../../modules/cloudflare"
+  source = "./modules/cloudflare"
 
   zone_name = local.cloudflare_zone_name
 
@@ -48,7 +48,7 @@ module "cloudflare" {
 ## SSL Cert for load balancer
 
 module "acm_ssl_cert" {
-  source = "../../modules/cloudflare-aws-ssl-cert"
+  source = "./modules/cloudflare-aws-ssl-cert"
 
   domain_name      = local.cloudflare_zone_name
   environment_name = local.environment_name
@@ -60,7 +60,7 @@ module "acm_ssl_cert" {
 ## Load balancer
 
 module "aws_lb" {
-  source = "../../modules/aws-lb"
+  source = "./modules/aws-lb"
 
   #allowed_ingress_ips = data.cloudflare_ip_ranges.cloudflare.ipv4_cidr_blocks
   vpc_id            = data.aws_vpc.default_vpc.id
@@ -79,7 +79,7 @@ module "aws_lb" {
 ## ECS Task and Definition
 
 module "aws_ecs" {
-  source                = "../../modules/aws-ecs"
+  source                = "./modules/aws-ecs"
   environment_name      = local.environment_name
   vpc_id                = data.aws_vpc.default_vpc.id
   alb_security_group_id = module.aws_lb.alb_security_group_id

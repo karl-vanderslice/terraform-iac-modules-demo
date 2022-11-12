@@ -1,3 +1,1 @@
-# Terraform Infrastructure as Code Modules Demo
-
-Demonstrates using Hashicorp Terraform to deploy
+# Python app using AWS ECS, Cloudflare, and Terraform

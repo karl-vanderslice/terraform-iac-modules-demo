@@ -104,7 +104,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
   ]
   TASK_DEFINITION
 
-  # Don't overwrite task changes for now, assume we'll have another operation doing that
+  # Don't overwrite task changes for now, assume we'll have another operation doing that ie. github actions
   lifecycle {
     ignore_changes = [container_definitions]
   }
