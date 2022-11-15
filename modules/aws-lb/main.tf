@@ -51,7 +51,7 @@ resource "aws_alb_target_group" "tg" {
 
 }
 
-# HTTPS and HTTP listeners - terminating HTTPS at Cloudflare 
+# HTTPS and HTTP listeners
 
 resource "aws_alb_listener" "https" {
   load_balancer_arn = aws_alb.alb.arn
