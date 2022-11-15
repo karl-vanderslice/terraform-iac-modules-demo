@@ -14,6 +14,7 @@ variable "tags" {
   default = {
     "costCode" = "123456"
     "foo"      = "bar"
+    "contact"  = "karl vanderslice on slack"
   }
   type        = map(any)
   description = "Map of tags to add to created resources."
