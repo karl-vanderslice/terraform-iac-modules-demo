@@ -1,16 +1,19 @@
 # Data sources
 
-## Used for securing our Security Groups to allow ONLY ingress traffic from Cloudflare's known IP ranges (https://www.cloudflare.com/ips/)
+## Used for securing our Security Groups to allow ONLY ingress 
+## traffic from Cloudflare's known IP ranges (https://www.cloudflare.com/ips/)
 
 data "cloudflare_ip_ranges" "cloudflare" {}
 
-## Get our default VPC.  In a production scenario, we'd want to either include this as part of our solution, or use an existing non-default VPC as a data source or variable. 
+## Get our default VPC.  In a production scenario, we'd want to either include 
+## this as part of our solution, or use an existing non-default VPC as a data source or variable. 
 
 data "aws_vpc" "default_vpc" {
   default = true
 }
 
-## Grab our public subnets - similar to above, in a production scenario we probably know this before time or can derive this better from tags we've pre-populated on a non-default VPC.
+## Grab our public subnets based on map-public-ip tag - similar to above, in a production scenario we 
+## probably know this before time or can derive this better from tags we've pre-populated on a non-default VPC.
 
 data "aws_subnets" "public_subnet_ids" {
   filter {
@@ -94,7 +97,8 @@ module "aws_ecs" {
 
 # Remaining non-module resources
 
-## External CNAME record for Cloudflare, pointing at our application load balancer.  Not using a module here.
+## External CNAME record for Cloudflare, pointing at our application load balancer.  
+## Not using a module here for time reasons
 
 resource "cloudflare_record" "app_cname" {
   zone_id = data.cloudflare_zone.cloudflare.id
