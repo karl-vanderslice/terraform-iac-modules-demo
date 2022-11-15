@@ -11,8 +11,9 @@ variable "cloudflare_zone_name" {
 }
 
 variable "tags" {
-  default     = {
+  default = {
     "costCode" = "123456"
+    "foo"      = "bar"
   }
   type        = map(any)
   description = "Map of tags to add to created resources."

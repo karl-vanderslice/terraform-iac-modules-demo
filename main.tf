@@ -62,7 +62,7 @@ module "acm_ssl_cert" {
 module "aws_lb" {
   source = "./modules/aws-lb"
 
-  #allowed_ingress_ips = data.cloudflare_ip_ranges.cloudflare.ipv4_cidr_blocks
+  allowed_ingress_ips = data.cloudflare_ip_ranges.cloudflare.ipv4_cidr_blocks
   vpc_id            = data.aws_vpc.default_vpc.id
   public_subnet_ids = data.aws_subnets.public_subnet_ids.ids
 
